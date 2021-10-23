@@ -12,7 +12,7 @@ class Extract(Resource):
         file_=request.files['img']
         img=Image.open(file_)
         text=pytesseract.image_to_string(img)
-        return {'text':text}, 201
+        return {'text':text}
 
 ## Actually setup the Api resource routing here
 api.add_resource(Extract, '/')
