@@ -1,22 +1,19 @@
-from flask import Flask,request
-from flask_restful import reqparse, abort, Api, Resource
+from flask import Flask
+from flask_restful import Api
 
-from PIL import Image
-from pytesseract import pytesseract
+#Modules
+from common.util import Format
+from resources.extract import Extract
+from resources.validate import Validate
 
+#initiate
 app = Flask(__name__)
 api = Api(app)
 
-class Extract(Resource):
-    def post(self):
-        file_=request.files['img']
-        img=Image.open(file_)
-        text=pytesseract.image_to_string(img)
-        return {'text':text}, 201
-
-## Actually setup the Api resource routing here
+#Routes
 api.add_resource(Extract, '/')
+api.add_resource(Validate, '/gps')
 
-
+#Run
 if __name__ == '__main__':
     app.run(debug=True)
