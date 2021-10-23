@@ -1,3 +1,5 @@
+Pillow
+pytesseract
 flask
 gunicorn
 flask-restful
