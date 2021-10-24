@@ -2,7 +2,6 @@ from flask import Flask
 from flask_restful import Api
 
 #Modules
-from common.util import Format
 from resources.extract import Extract
 from resources.validate import Validate
 
